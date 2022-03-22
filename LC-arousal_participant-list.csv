@@ -1,0 +1,194 @@
+label_subject,label_session,completed_MRI_TSE,include_LCpipeline,exclude_LCpipeline_reason,include_initMPRtemplate,has_LCcontrast,missing_LCcontrast_reason,completed_stresstask,didnotcomplete_stresstask_reason,has_physio,missing_physio_reason,has_pasat,missing_pasat_reason,has_stroop,missing_stroop_reason,completed_oldversion_stresstask
+sub-5001,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5002,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5003,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5004,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5005,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5006,ses-pre,1,0,motion artifact,0,0,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5007,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5008,ses-pre,1,0,motion artifact,0,0,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5009,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5010,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,recording_error,0,recording_error,0
+sub-5011,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5013,ses-pre,1,0,motion artifact,0,0,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5014,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5015,ses-pre,1,0,motion artifact,0,0,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5016,ses-pre,1,0,motion artifact,0,0,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5017,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5018,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5019,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5020,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5021,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5022,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5023,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5024,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5025,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5026,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5027,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5028,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5029,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5030,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5031,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5032,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5033,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5034,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5035,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5036,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5037,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5038,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5039,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5040,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5041,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5042,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5043,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5044,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5045,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5046,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5047,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5048,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5049,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5050,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5051,ses-pre,1,0,motion artifact,0,0,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5052,ses-pre,1,0,motion artifact,0,0,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5053,ses-pre,1,0,motion artifact,0,0,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5054,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5056,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5058,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5059,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5060,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5061,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5062,ses-pre,1,0,motion artifact,0,0,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-5063,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6002,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6003,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6004,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6005,ses-pre,1,0,motion artifact,0,0,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6006,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6007,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6008,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6009,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6010,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6011,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6012,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6013,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6014,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6015,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6016,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6017,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6018,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6019,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6020,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6021,ses-pre,1,1,NA,0,1,NA,1,NA,0,recording_error,1,NA,0,recording_error,0
+sub-6022,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6023,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6024,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6025,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6027,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6028,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6029,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6030,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6031,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6032,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6033,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6034,ses-pre,1,0,susceptibility artifact overlapping LC,0,0,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6035,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6037,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6038,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6039,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6040,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6041,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6042,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6043,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6044,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6045,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6046,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6047,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6048,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6049,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6050,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6051,ses-pre,1,0,motion artifact,0,0,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6052,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6053,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6054,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6055,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6056,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6057,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-6058,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,0
+sub-7003,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,1
+sub-7004,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,1
+sub-7007,ses-pre,1,0,susceptibility artifact overlapping LC,0,0,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7008,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7009,ses-pre,1,0,motion artifact,0,0,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7010,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,0,recording_error,0
+sub-7011,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7012,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7013,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7014,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7015,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7016,ses-pre,1,0,motion artifact,0,0,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7017,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7018,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7019,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7021,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7022,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7023,ses-pre,1,1,NA,0,0,incorrect search space placement,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7024,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7025,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7026,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7027,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7028,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7029,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7030,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7031,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7032,ses-pre,1,0,motion artifact,0,0,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7033,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7034,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7035,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7036,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8001,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,1
+sub-8002,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,1,NA,1,NA,1
+sub-8003,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,1,NA,1,NA,1
+sub-8004,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8006,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8008,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8009,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8010,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8011,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8013,ses-pre,1,0,different FSE resolution,0,0,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8014,ses-pre,1,0,motion artifact,0,0,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8015,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8016,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8018,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,0,recording_error,0
+sub-8019,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8020,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8021,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8022,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8023,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8026,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8027,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8028,ses-pre,1,1,NA,1,1,NA,1,NA,0,recording_error,0,older_adult,0,recording_error,0
+sub-8029,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8030,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8031,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8032,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8033,ses-pre,1,1,NA,0,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8034,ses-pre,1,1,NA,1,1,NA,1,NA,1,NA,0,older_adult,1,NA,0
+sub-5012,ses-pre,0,0,NA,0,0,0,0,dropout,NA,NA,NA,NA,NA,NA,NA
+sub-5055,ses-pre,0,0,NA,0,0,0,1,NA,1,NA,1,NA,1,NA,0
+sub-5057,ses-pre,0,0,NA,0,0,0,1,NA,1,NA,1,NA,1,NA,0
+sub-6001,ses-pre,0,0,NA,0,0,0,1,NA,1,NA,1,NA,1,NA,0
+sub-6026,ses-pre,0,0,NA,0,0,0,1,NA,0,recording_error,1,NA,1,NA,0
+sub-6036,ses-pre,0,0,NA,0,0,0,1,NA,1,NA,1,NA,1,NA,0
+sub-7001,ses-pre,0,0,NA,0,0,0,1,NA,1,NA,1,NA,1,NA,1
+sub-7002,ses-pre,0,0,NA,0,0,0,1,NA,1,NA,1,NA,1,NA,1
+sub-7005,ses-pre,0,0,NA,0,0,0,0,dropout,NA,NA,NA,NA,NA,NA,NA
+sub-7006,ses-pre,0,0,NA,0,0,0,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7020,ses-pre,0,0,NA,0,0,0,1,NA,1,NA,0,older_adult,1,NA,0
+sub-7037,ses-pre,0,0,NA,0,0,0,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8005,ses-pre,0,0,NA,0,0,0,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8007,ses-pre,0,0,NA,0,0,0,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8012,ses-pre,0,0,NA,0,0,0,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8017,ses-pre,0,0,NA,0,0,0,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8024,ses-pre,0,0,NA,0,0,0,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8025,ses-pre,0,0,NA,0,0,0,1,NA,1,NA,0,older_adult,1,NA,0
+sub-8035,ses-pre,0,0,NA,0,0,0,1,NA,1,NA,0,older_adult,1,NA,0

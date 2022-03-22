@@ -1,0 +1,608 @@
+---
+title: "Associations between locus coeruleus MRI contrast and physiological responses to acute stress in younger and older adults"
+subtitle: "Analysis Check" 
+author: "Bachman, S.L., Nashiro, K., Yoo, H.J., Wang, D., Thayer, F., & Mather, M."
+date: "2022"
+output: 
+  html_document:
+    toc: true
+    theme: cosmo
+---
+
+```{r setup, include = FALSE}
+
+rm(list = ls())
+library(papaja)
+library(here)
+library(data.table)
+library(dplyr)
+library(stringr)
+library(tidyr)
+library(ggplot2)
+library(ggpubr)
+library(papaja) # install with: devtools::install_github("crsh/papaja")
+library(lme4)
+library(lmerTest)
+library(emmeans)
+library(afex)
+library(parameters)
+library(effectsize)
+library(ggcorrplot2)
+library(cowplot)
+library(R.matlab)
+library(kableExtra)
+
+```
+
+```{r analysis-preferences}
+
+set.seed(42)
+knitr::opts_chunk$set(warning = FALSE,
+                      message = FALSE,
+                      dpi = 600,
+                      cache.extra = knitr::rand_seed)
+
+# create figure directory if it doesn't exist
+if (!dir.exists(here('figures'))) {
+  dir.create('figures')
+  message('created figures subdirectory...')
+} else {
+  message('not creating figures subdirectory - it already exists!')
+}
+
+```
+
+```{r run_0}
+
+# functions and figure settings
+source(here('scripts', '0_setup.R'))
+
+```
+
+```{r load_data}
+
+load(here('data', 'LC-arousal_data-raw_2022-03-22.RData'))
+
+```
+
+```{r run_participants}
+
+source(here('scripts', '1_participants.R'))
+
+```
+
+## Methods
+
+### Participants
+
+Participants who completed an MRI session including an TSE scan and an acute stress induction task at the pre-intervention timepoint: 
+
+- `r sum(summary_MRI_and_stresstask$n[summary_MRI_and_stresstask$age_group == 'YA'])` younger 
+- `r sum(summary_MRI_and_stresstask$n[summary_MRI_and_stresstask$age_group == 'OA'])` older
+
+Of those who completed the acute stress induction task and an MRI session, scans from `r sum(summary_excl_before_LCpipeline$n)` participants were excluded from LC delineation due to:
+
+- severe motion artifact (n = `r summary_excl_before_LCpipeline$n[summary_excl_before_LCpipeline$exclude_LCpipeline_reason == 'motion artifact']`)
+- susceptibility artifact overlapping the LC or pons (n = `r summary_excl_before_LCpipeline$n[summary_excl_before_LCpipeline$exclude_LCpipeline_reason == 'susceptibility artifact overlapping LC']`)
+- incorrect scan resolution (n = `r summary_excl_before_LCpipeline$n[summary_excl_before_LCpipeline$exclude_LCpipeline_reason == 'different FSE resolution']`). 
+
+Exclusions following LC delineation:
+
+- `r sum(summary_excl_after_LCpipeline$n)` older participant, due to incorrect placement of the LC search space
+
+Exclusions from stress task anlaysis (for missing complete physiological recordings):
+
+- `r summary_excl_missing_physio$n[summary_excl_missing_physio$age_group == 'YA']` younger
+- `r summary_excl_missing_physio$n[summary_excl_missing_physio$age_group == 'OA']` older
+
+Final sample for analysis included `r sum(summary_LC_and_physio$n)` participants:
+
+- `r summary_LC_and_physio$n[summary_LC_and_physio$age_group == 'YA']` younger
+- `r summary_LC_and_physio$n[summary_LC_and_physio$age_group == 'OA']` older
+
+```{r table1}
+
+kable(table1, 
+      row.names = TRUE, 
+      caption = 'Table 1. Sample characteristics') %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+### Physiological data analysis
+
+```{r run_physio}
+
+# exclude relevant physio segments based on QC & summarize exclusions
+source(here('scripts', '2_qc-physio-data.R'))
+
+# organize physio data & calculate reactivity/recovery for each measure
+source(here('scripts', '3_organize-physio-data.R'))
+
+```
+
+**ECG signals**
+
+Summary of ECG segments demonstrating excessive noise or abnormalities such that QRS-complexes were not discernible:
+
+```{r ECG_excl_1}
+
+kable(excl_physio_manual %>%
+        select(n_signals, n_excl_ECG_manual, frac_excl_ECG_manual)) %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+Summary of additional ECG segments excluded from analysis based on signal quality index:
+
+```{r ECG_excl_2}
+
+kable(excl_ECG_rrsqi, digits = 3) %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+**Respiration signals**
+
+Summary of segments with poor quality and/or inaccurate peak detection in the majority of the segment:
+
+```{r RSP_excl}
+
+kable(excl_physio_manual %>%
+        select(n_signals, n_excl_RSP_manual, frac_excl_RSP_manual)) %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+**Continuous blood pressure signals**
+
+Summary of segments in which regular systolic peaks were not detectable were excluded from analyses of systolic blood pressure: 
+
+```{r BP_excl}
+
+kable(excl_physio_manual %>%
+        select(n_signals, n_excl_BP_manual, frac_excl_BP_manual)) %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+- Segments during which BP monitor re-calibrated mid-way through data collection: `r excl_BP_trimmed$n_excl_BP_trimmed`
+
+### LC delineation
+
+```{r run_LC}
+
+# calculates ICCs between raters' manual LC intensities
+# and between manual/semiautomated LC intensities
+source(here('scripts', '4_icc-LC-intensities.R'))
+
+# calculates peak, rostral and caudal LC ratios
+source(here('scripts', '5_calculate-LC-ratios.R'))
+
+```
+
+Results of ICC analyses examining correspondence between peak LC intensities from each manual rater are presented below:
+
+```{r icc_raters_leftLC}
+
+icc_raters_leftLC
+
+```
+
+```{r icc_raters_rightLC}
+
+icc_raters_rightLC
+
+```
+
+Results of ICC analyses examining peak LC intensities from the semi-automated LC vs. manual methods are presented below:
+
+**Left LC**
+
+```{r icc_methods_leftLC}
+
+icc_methods_leftLC
+
+```
+
+**Right LC**
+
+```{r icc_methods_rightLC}
+
+icc_methods_rightLC
+
+```
+
+### Outlier removal
+
+```{r tableS1}
+
+table_rmout <- summary_rmout %>%
+  filter(variable %in% c('HR_mean', 'resp_rate', 'BP_systolic', 'aSKNA_mean', 'log_RMSSD', 'log_hf_lomb', 'log_lf_lomb')) %>%
+  mutate(`Arousal measure` = case_when(
+            variable == 'HR_mean' ~ 'Heart rate',
+            variable == 'resp_rate' ~ 'Breathing rate',
+            variable == 'BP_systolic' ~ 'Systolic blood pressure',
+            variable == 'aSKNA_mean' ~ 'Sympathetic tone (aSKNA)',
+            variable == 'log_RMSSD' ~ 'RMSSD',
+            variable == 'log_hf_lomb' ~ 'log HF power',
+            variable == 'log_lf_lomb' ~ 'log LF power'
+            )
+         ) %>%
+  rowwise() %>%
+  mutate(`N (%) Outliers` = paste(n_outliers, ' (', round(pct_outliers, 2), '%)', sep = '')) %>%
+  select(`Arousal measure`, 
+         `Age group` = age_group,
+         `N (%) Outliers`)
+
+kable(table_rmout,
+      row.names = TRUE,
+      caption = 'Table S1. Summary of outliers identified for average values of each arousal measure.') %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+```{r tableS2}
+
+table_rmout_interval <- summary_rmout_interval %>%
+  filter(variable %in% c('HR_mean', 'resp_rate', 'BP_systolic', 'aSKNA_mean', 'log_RMSSD')) %>%
+  mutate(`Arousal measure` = case_when(
+            variable == 'HR_mean' ~ 'Heart rate',
+            variable == 'resp_rate' ~ 'Breathing rate',
+            variable == 'BP_systolic' ~ 'Systolic blood pressure',
+            variable == 'aSKNA_mean' ~ 'Sympathetic tone (aSKNA)',
+            variable == 'log_RMSSD' ~ 'RMSSD'
+            )
+         ) %>%
+  rowwise() %>%
+  mutate(`N (%) Outliers` = paste(n_outliers, ' (', round(pct_outliers, 2), '%)', sep = '')) %>%
+  select(`Arousal measure`, 
+         `Age group` = age_group,
+         `N (%) Outliers`)
+
+kable(table_rmout_interval,
+      row.names = TRUE,
+      caption = 'Table S2. Summary of outliers identified from rolling average values of each arousal measure during the challenge phase.') %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+## Results
+
+```{r run_stresstask_analysis}
+
+source(here('scripts', '6_analyze-stresstask-effectiveness.R'))
+
+```
+
+### Effectiveness of the acute stress induction protocol
+
+```{r figure3, fig.width = 12, fig.height = 14}
+
+figure3
+
+```
+
+Linear mixed-effects analysis results:
+
+```{r table2}
+
+table2 <- as.data.frame(
+  rbind(
+    # for all but aSKNA results, converting Estimate/SE columns to string
+    # (those columns are already strings for aSKNA)
+    format_lme4_results(mod.HR, r.HR) %>%
+      rowwise() %>%
+      mutate(Estimate = paste(round(Estimate, digits = 3)),
+             SE = paste(round(SE, digits = 3))),
+    format_lme4_results(mod.resp, r.resp) %>%
+            rowwise() %>%
+      mutate(Estimate = paste(round(Estimate, digits = 3)),
+             SE = paste(round(SE, digits = 3))),
+    format_lme4_results(mod.sysBP, r.sysBP) %>%
+            rowwise() %>%
+      mutate(Estimate = paste(round(Estimate, digits = 3)),
+             SE = paste(round(SE, digits = 3))),
+    format_lme4_results(mod.diaBP, r.diaBP) %>%
+            rowwise() %>%
+      mutate(Estimate = paste(round(Estimate, digits = 3)),
+             SE = paste(round(SE, digits = 3))),
+    format_lme4_results(mod.aSKNA, r.aSKNA)
+  )
+)
+
+kable(table2,
+      digits = 3, 
+      caption = 'Results of linear mixed effects analyses testing that during the acute stress induction protocol, average heart rate (A), breathing rate (B), systolic blood pressure (C), diastolic blood pressure (D), and sympathetic tone (E) differed during the baseline and challenge phases and during the challenge and recovery phases.') %>%
+  kable_styling(full_width = FALSE) %>%
+  pack_rows(start_row = 1, end_row = 6, group_label = 'A. Heart rate') %>%
+  pack_rows(start_row = 7, end_row = 12, group_label = 'B. Breathing rate') %>%
+  pack_rows(start_row = 13, end_row = 18, group_label = 'C. Systolic blood pressure') %>%
+  pack_rows(start_row = 19, end_row = 24, group_label = 'D. Diastolic blood pressure') %>%
+  pack_rows(start_row = 25, end_row = 30, group_label = 'E. Sympathetic tone') 
+
+```
+
+```{r table3}
+
+table3 <- as.data.frame(
+  rbind(
+    format_lme4_results(mod.RMSSD, r.RMSSD),
+    format_lme4_results(mod.HF, r.HF),
+    format_lme4_results(mod.LF, r.LF)
+  )
+)
+
+kable(table3,
+      digits = 3, 
+      caption = 'Table 3. Results of linear mixed effects analyses testing that during the acute stress induction protocol, average RMSSD (A), HF power (B), and LF power (C) differed during the baseline and challenge phases and during the challenge and recovery phases.') %>%
+  kable_styling(full_width = FALSE) %>%
+  pack_rows(start_row = 1, end_row = 6, group_label = 'A. RMSSD') %>%
+  pack_rows(start_row = 7, end_row = 12, group_label = 'B. HF power') %>%
+  pack_rows(start_row = 13, end_row = 18, group_label = 'C. LF power')
+
+```
+
+Pairwise copmarison results:
+
+#### Heart rate
+
+```{r stresstask_HR_pairwise}
+
+kable(pairwise.HR,
+      digits = c(NA, NA, 2, 2, 2, 2, NA),
+      caption = 'Table S3. Results of pairwise comparisons of estimated marginal means of heart rate during the acute stress induction task, for each phase contrast of interest and age group.') %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+
+```{r stresstask_RSP_pairwise}
+
+kable(pairwise.resp,
+      digits = c(NA, NA, 2, 2, 2, 2, NA),
+      caption = 'Table S4. Results of pairwise comparisons of estimated marginal means of breathing rate during the acute stress induction task, for each phase contrast of interest and age group.') %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+#### Systolic blood pressure
+
+```{r stresstask_sysBP_pairwise}
+
+kable(pairwise.sysBP,
+      digits = c(NA, NA, 2, 2, 2, 2, NA),
+      caption = 'Table S5. Results of pairwise comparisons of estimated marginal means of systolic blood pressure during the acute stress induction task, for each phase contrast of interest and age group.') %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+#### Diastolic blood pressure
+
+```{r stresstask_diaBP_pairwise}
+
+kable(pairwise.diaBP,
+      digits = c(NA, NA, 2, 2, 2, 2, NA),
+      caption = 'Table S6. Results of pairwise comparisons of estimated marginal means of diastolic blood pressure during the acute stress induction task, for each phase contrast of interest and age group.') %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+#### Sympathetic tone
+
+```{r stresstask_aSKNA_pairwise}
+
+kable(pairwise.aSKNA,
+      digits = c(NA, NA, 2, 2, 2, 2, NA),
+      caption = 'Table S7. Results of pairwise comparisons of estimated marginal means of sympathetic tone during the acute stress induction task, for each phase contrast of interest and age group.') %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+#### RMSSD
+
+```{r stresstask_RMSSD_pairwise}
+
+kable(pairwise.RMSSD,
+      digits = c(NA, NA, 2, 2, 2, 2, NA),
+      caption = 'Table S8. Results of pairwise comparisons of estimated marginal means of RMSSD during the acute stress induction task, for each phase contrast of interest and age group.') %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+#### HF power
+
+```{r stresstask_HF_pairwise}
+
+kable(pairwise.HF,
+      digits = c(NA, NA, 2, 2, 2, 2, NA),
+      caption = 'Table S9. Results of pairwise comparisons of estimated marginal means of HF power during the acute stress induction task, for each phase contrast of interest and age group.') %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+#### LF power
+
+```{r stresstask_LF_pairwise}
+
+kable(pairwise.LF,
+      digits = c(NA, NA, 2, 2, 2, 2, NA),
+      caption = 'Table S10. Results of pairwise comparisons of estimated marginal means of LF power during the acute stress induction task, for each phase contrast of interest and age group.') %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+#### Task performance
+
+NOTE: The older adult data points for the PASAT are only added so I could get the spacing right across tasks. They are removed in Inkscape for the version in the manuscript.
+
+```{r figureS1, fig.width = 12, fig.height = 8}
+
+fig_challenge_tasks
+
+```
+
+**Summary of PASAT performance for younger participants (not completed by older)**:
+
+```{r pasat_performance}
+
+kable(summary_pasat) %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+**Summary of Stroop performance by age group**:
+
+```{r stroop_performance}
+
+kable(summary_stroop) %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+- *t*-test comparing accuracy by age group:
+
+```{r stroop_ttest_acc}
+
+ttest_stroop_acc
+r_stroop_acc$r # effect size
+
+```
+
+- *t*-test comparing reaction times by age group:
+
+```{r stroop_ttest_RT}
+
+ttest_stroop_rt
+r_stroop_rt$r # effect size
+
+```
+
+### LC MRI contrast in the sample
+
+```{r run_LC_analysis}
+
+# analyzes LC ratios across age groups
+source(here('scripts', '7_analyze-LC-ratios.R'))
+
+```
+
+```{r figure4, fig.width = 5, fig.height = 3}
+
+figure4
+
+```
+
+**Welch's *t*-test** of peak LC by age group:
+
+```{r ttest_LC}
+
+ttest.LC_agegr
+
+```
+
+*r* for the difference was: `r round(r.LC_agegr, digits = 3)`.
+
+**2x2 mixed-design ANOVA** testing effects of topography (rostral/caudal) and age group (younger/older):
+
+```{r aov_LC}
+
+kable(aov.LC_topo$anova_table %>%
+        mutate(r = r.LC_topo$r),
+      digits = 3) %>%
+  kable_styling(full_width = FALSE)
+
+```
+
+### Associations between LC MRI contrast and arousal during the stress induction task
+
+```{r run_PLSprep}
+
+# note that at this step, PLS data is saved to data/derivatives
+# after this step, you need to run the following 2 scripts in MATLAB:
+# scripts/PLS/A_prepare_PLS_input.m
+# scripts/PLS/B_run_PLS.m
+
+if (!dir.exists(here('data', 'derivatives'))) {
+  dir.create(here('data', 'derivatives'))
+  message('creating data/derivatives subdirectory - PLS input data will get saved here...')
+} else {
+  message('not creating data/derivatives subdirectory - already exists!')
+}
+
+# saves data for PLS analysis in data/derivatives
+source(here('scripts', '8_prepare-data-PLS.R'))
+
+```
+
+```{r run_corrs}
+
+# runs pairwise correlations between arousal and LC measures
+source(here('scripts', '9_create-corr-matrices.R'))
+
+```
+
+#### Pairwise correlations
+
+```{r figure5, fig.height = 14, fig.width = 12}
+
+cor_plot_all_peak
+
+```
+
+#### Pairwise correlations in younger adults
+
+```{r cor_results_YA}
+
+# peak LC vs. breathing rate during recovery
+cor_YA_LCpeak_resp_recov
+
+# rostral LC vs. aSKNA during recovery recovery
+cor_YA_LCrostral_aSKNA_recov
+
+```
+
+#### Pairwise correlations in older adults
+
+```{r cor_results_OA}
+
+# peak LC & LF power at baseline
+cor_OA_LCpeak_LF_baseline
+
+# caudal LC & sysBP reactivity
+cor_OA_LCcaudal_sysBP_react 
+
+# caudal LC & RMSSD during recovery
+cor_OA_LCcaudal_HF_recov
+
+```
+
+#### PLS results
+
+Participants included for PLS analysis:
+- Younger: `r n_PLS_peak$n[n_PLS_peak$age_group == 'YA']`
+- Older: `r n_PLS_peak$n[n_PLS_peak$age_group == 'OA']`
+
+```{r run_PLSviz}
+
+# visualizes PLS results
+# (note that you need to have run the scripts in scripts/PLS for this to work!)
+source(here('scripts', '10_visualize-PLS-results.R'))
+
+```
+
+```{r figure6, fig.width = 12, fig.height = 5}
+
+fig_pls_caudal_peak
+
+```
+
+Measures with bootstrap ratio with absolute value |>2| in the figure above:
+
+```{r bootratios}
+
+kable(data_LV_all_caudal %>% 
+        filter(boot_ratio > 2 | boot_ratio < -2)) %>%
+  kable_styling(full_width = FALSE)
+
+```
