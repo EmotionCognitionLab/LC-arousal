@@ -1,8 +1,10 @@
 ## Associations between locus coeruleus MRI contrast and physiological responses to acute stress in younger and older adults
 
-Analysis materials for: Bachman, S.L., Nashiro, K., Yoo, H.J., Wang, D., Thayer, F. & Mather, M. (2022). [Associations between locus coeruleus MRI contrast and physiological responses to acute stress in younger and older adults.](https://doi.org/10.1101/2022.03.12.484104)
+Analysis materials for: Bachman, S.L., Nashiro, K., Yoo, H.J., Wang, D., Thayer, F. & Mather, M. (2022). Associations between locus coeruleus MRI contrast and physiological responses to acute stress in younger and older adults. *Brain Research 1796,* 148070. [doi: 10.1016/j.brainres.2022.148070](https://doi.org/10.1016/j.brainres.2022.148070)
 
-For questions, contact [sbachman\@usc.edu](mailto:sbachman@usc.edu).
+Data are available on [OpenNeuro](https://openneuro.org/datasets/ds003823).
+
+For questions, contact [sbachman@alumni.usc.edu](mailto:sbachman@alumni.usc.edu).
 
 ## Description
 
