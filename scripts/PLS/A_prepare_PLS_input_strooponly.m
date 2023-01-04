@@ -20,8 +20,8 @@ dir.data        = [dir.root, filesep, 'data', filesep, 'derivatives'];
 %% load PLS data -- all phases (single-group version)
 
 % load data as table
-data_all = readtable([dir.data, filesep, 'LC-arousal_pls-all_avg.csv'], ...
-    TreatAsMissing = 'NaN', NumHeaderLines = 1, VariableNamesLine = 1);
+data_all = readtable([dir.data, filesep, 'LC-arousal_pls-all_avg_strooponly.csv'], ...
+    'TreatAsMissing', 'NaN', 'NumHeaderLines', 1, 'VariableNamesLine', 1);
 
 % set row names as subject IDs, for indexing purposes
 data_all.Properties.RowNames = data_all.label_subject;
@@ -46,8 +46,8 @@ end
 %% load PLS data -- all phases (multi-group version)
 
 % load data to table
-data_all = readtable([dir.data, filesep, 'LC-arousal_pls-all_avg.csv'], ...
-    TreatAsMissing = 'NaN', NumHeaderLines = 1, VariableNamesLine = 1);
+data_all = readtable([dir.data, filesep, 'LC-arousal_pls-all_avg_strooponly.csv'], ...
+    'TreatAsMissing', 'NaN', 'NumHeaderLines', 1, 'VariableNamesLine', 1);
 
 % set row names as subject IDs, for indexing purposes
 data_all.Properties.RowNames = data_all.label_subject;
@@ -90,5 +90,5 @@ clear data_all data_all_YA data_all_OA cols_all tmp ii
 
 %% save data
 
-save([dir.data, filesep, 'PLS_all_input_avg.mat'], 'pls_input_all', 'pls_input_all_YA', 'pls_input_all_OA')
+save([dir.data, filesep, 'PLS_all_input_avg_strooponly.mat'], 'pls_input_all', 'pls_input_all_YA', 'pls_input_all_OA')
 disp('all done preparing PLS input data!')

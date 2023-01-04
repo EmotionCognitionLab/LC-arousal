@@ -260,6 +260,259 @@ ggsave(filename = here('figures', 'figure3_stresstask_effectiveness.svg'),
        height = 16)
 
 
+# create figure (stroop-only version) -------------------------------------
+
+# make a copy of the data for plotting
+data_physio_fig_strooponly <- data_physio_avg_strooponly
+
+data_physio_fig_strooponly$phase <- factor(data_physio_fig_strooponly$phase, levels = c('Baseline', 'Challenge', 'Recovery'))
+data_physio_fig_strooponly$age_group[data_physio_fig_strooponly$age_group == 'YA'] <- 'Younger'
+data_physio_fig_strooponly$age_group[data_physio_fig_strooponly$age_group == 'OA'] <- 'Older'
+data_physio_fig_strooponly$age_group <- factor(data_physio_fig_strooponly$age_group, levels = c('Younger', 'Older'))
+
+figure3_strooponly <- ggarrange(
+  ggplot(data = data_physio_fig_strooponly,
+         aes(x = phase, y = HR_mean,
+             colour = age_group, fill = age_group)) +
+    geom_point(pch = 21,
+               size = 1,
+               alpha = 0.4,
+               colour = 'black',
+               position = position_jitter(width = 0.05)) +
+    geom_flat_violin(alpha = 0.4,
+                     position = position_nudge(x = 0.15),
+                     trim = TRUE) +
+    stat_summary(aes(group = age_group),
+                 geom = 'line',
+                 position = position_nudge(x = 0.25)) +
+    stat_sum_df('mean_se',
+                fill = 'white',
+                position = position_nudge(x = 0.25)) +
+    scale_colour_manual(values = palette_agegr) +
+    scale_fill_manual(values = palette_agegr) +
+    labs(x = '', y = 'Heart rate (beats per minute)',
+         colour = 'Age group', fill = 'Age group',
+         title = 'A. Heart rate') +
+    facet_wrap(~age_group, strip.position = 'top') +
+    theme_apa() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 0.8),
+          plot.title = element_text(face = 'bold'),
+          strip.text.x = element_blank()),
+  
+  ggplot(data = data_physio_fig_strooponly,
+         aes(x = phase, y = resp_rate,
+             colour = age_group, fill = age_group)) +
+    geom_point(pch = 21,
+               size = 1,
+               alpha = 0.4,
+               colour = 'black',
+               position = position_jitter(width = 0.05)) +
+    geom_flat_violin(alpha = 0.4,
+                     position = position_nudge(x = 0.15),
+                     trim = TRUE) +
+    stat_summary(aes(group = age_group),
+                 geom = 'line',
+                 position = position_nudge(x = 0.25)) +
+    stat_sum_df('mean_se',
+                fill = 'white',
+                position = position_nudge(x = 0.25)) +
+    scale_colour_manual(values = palette_agegr) +
+    scale_fill_manual(values = palette_agegr) +
+    labs(x = '', y = 'Breathing rate (breaths per minute)',
+         colour = 'Age group', fill = 'Age group',
+         title = 'B. Breathing rate') +
+    facet_wrap(~age_group, strip.position = 'top') +
+    theme_apa() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 0.8),
+          plot.title = element_text(face = 'bold'),
+          strip.text.x = element_blank()),
+  
+  ggplot(data = data_physio_fig_strooponly,
+         aes(x = phase, y = BP_systolic,
+             colour = age_group, fill = age_group)) +
+    geom_point(pch = 21,
+               size = 1,
+               alpha = 0.4,
+               colour = 'black',
+               position = position_jitter(width = 0.05)) +
+    geom_flat_violin(alpha = 0.4,
+                     position = position_nudge(x = 0.15),
+                     trim = TRUE) +
+    stat_summary(aes(group = age_group),
+                 geom = 'line',
+                 position = position_nudge(x = 0.25)) +
+    stat_sum_df('mean_se',
+                fill = 'white',
+                position = position_nudge(x = 0.25)) +
+    scale_colour_manual(values = palette_agegr) +
+    scale_fill_manual(values = palette_agegr) +
+    labs(x = '', y = 'Systolic blood pressure (mmHg)',
+         colour = 'Age group', fill = 'Age group',
+         title = 'C. Systolic blood pressure') +
+    facet_wrap(~age_group, strip.position = 'top') +
+    theme_apa() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 0.8),
+          plot.title = element_text(face = 'bold'),
+          strip.text.x = element_blank()),
+  
+  ggplot(data = data_physio_fig_strooponly,
+         aes(x = phase, y = BP_diastolic,
+             colour = age_group, fill = age_group)) +
+    geom_point(pch = 21,
+               size = 1,
+               alpha = 0.4,
+               colour = 'black',
+               position = position_jitter(width = 0.05)) +
+    geom_flat_violin(alpha = 0.4,
+                     position = position_nudge(x = 0.15),
+                     trim = TRUE) +
+    stat_summary(aes(group = age_group),
+                 geom = 'line',
+                 position = position_nudge(x = 0.25)) +
+    stat_sum_df('mean_se',
+                fill = 'white',
+                position = position_nudge(x = 0.25)) +
+    scale_colour_manual(values = palette_agegr) +
+    scale_fill_manual(values = palette_agegr) +
+    labs(x = '', y = 'Diastolic blood pressure (mmHg)',
+         colour = 'Age group', fill = 'Age group',
+         title = 'D. Diastolic blood pressure') +
+    facet_wrap(~age_group, strip.position = 'top') +
+    theme_apa() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 0.8),
+          plot.title = element_text(face = 'bold'),
+          strip.text.x = element_blank()),
+  
+  ggplot(data = data_physio_fig_strooponly,
+         aes(x = phase, y = aSKNA_mean,
+             colour = age_group, fill = age_group)) +
+    geom_point(pch = 21,
+               size = 1,
+               alpha = 0.4,
+               colour = 'black',
+               position = position_jitter(width = 0.05)) +
+    geom_flat_violin(alpha = 0.4,
+                     position = position_nudge(x = 0.15),
+                     trim = TRUE) +
+    stat_summary(aes(group = age_group),
+                 geom = 'line',
+                 position = position_nudge(x = 0.25)) +
+    stat_sum_df('mean_se',
+                fill = 'white',
+                position = position_nudge(x = 0.25)) +
+    scale_colour_manual(values = palette_agegr) +
+    scale_fill_manual(values = palette_agegr) +
+    labs(x = '', y = 'aSKNA (microvolts)',
+         colour = 'Age group', fill = 'Age group',
+         title = 'E. Sympathetic tone') +
+    facet_wrap(~age_group, strip.position = 'top') +
+    theme_apa() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 0.8),
+          plot.title = element_text(face = 'bold'),
+          strip.text.x = element_blank()),
+  
+  ggplot(data = data_physio_fig_strooponly,
+         aes(x = phase, y = log_RMSSD,
+             colour = age_group, fill = age_group)) +
+    geom_point(pch = 21,
+               size = 1,
+               alpha = 0.4,
+               colour = 'black',
+               position = position_jitter(width = 0.05)) +
+    geom_flat_violin(alpha = 0.4,
+                     position = position_nudge(x = 0.15),
+                     trim = TRUE) +
+    stat_summary(aes(group = age_group),
+                 geom = 'line',
+                 position = position_nudge(x = 0.25)) +
+    stat_sum_df('mean_se',
+                fill = 'white',
+                position = position_nudge(x = 0.25)) +
+    scale_colour_manual(values = palette_agegr) +
+    scale_fill_manual(values = palette_agegr) +
+    labs(x = '', y = 'RMSSD (log transformed)',
+         colour = 'Age group', fill = 'Age group',
+         title = 'F. RMSSD') +
+    facet_wrap(~age_group, strip.position = 'top') +
+    theme_apa() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 0.8),
+          plot.title = element_text(face = 'bold'),
+          strip.text.x = element_blank()),
+  
+  ggplot(data = data_physio_fig_strooponly,
+         aes(x = phase, y = log_hf_lomb,
+             colour = age_group, fill = age_group)) +
+    geom_point(pch = 21,
+               size = 1,
+               alpha = 0.4,
+               colour = 'black',
+               position = position_jitter(width = 0.05)) +
+    geom_flat_violin(alpha = 0.4,
+                     position = position_nudge(x = 0.15),
+                     trim = TRUE) +
+    stat_summary(aes(group = age_group),
+                 geom = 'line',
+                 position = position_nudge(x = 0.25)) +
+    stat_sum_df('mean_se',
+                fill = 'white',
+                position = position_nudge(x = 0.25)) +
+    scale_colour_manual(values = palette_agegr) +
+    scale_fill_manual(values = palette_agegr) +
+    labs(x = '', y = 'HF power (log transformed)',
+         colour = 'Age group', fill = 'Age group',
+         title = 'G. HF power') +
+    facet_wrap(~age_group, strip.position = 'top') +
+    theme_apa() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 0.8),
+          plot.title = element_text(face = 'bold'),
+          strip.text.x = element_blank()),
+  
+  ggplot(data = data_physio_fig_strooponly,
+         aes(x = phase, y = log_lf_lomb,
+             colour = age_group, fill = age_group)) +
+    geom_point(pch = 21,
+               size = 1,
+               alpha = 0.4,
+               colour = 'black',
+               position = position_jitter(width = 0.05)) +
+    geom_flat_violin(alpha = 0.4,
+                     position = position_nudge(x = 0.15),
+                     trim = TRUE) +
+    stat_summary(aes(group = age_group),
+                 geom = 'line',
+                 position = position_nudge(x = 0.25)) +
+    stat_sum_df('mean_se',
+                fill = 'white',
+                position = position_nudge(x = 0.25)) +
+    scale_colour_manual(values = palette_agegr) +
+    scale_fill_manual(values = palette_agegr) +
+    labs(x = '', y = 'LF power (log transformed)',
+         colour = 'Age group', fill = 'Age group',
+         title = 'H. LF power') +
+    facet_wrap(~age_group, strip.position = 'top') +
+    theme_apa() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 0.8),
+          plot.title = element_text(face = 'bold'),
+          strip.text.x = element_blank()),
+  
+  
+  #nrow = 2, ncol = 4,
+  nrow = 4, ncol = 2,
+  
+  common.legend = TRUE, legend = 'right'
+)
+
+# save figure
+ggsave(filename = here('figures', 'figureS3_stresstask_effectiveness_strooponly.svg'),
+       plot = figure3_strooponly,
+       device = 'svg',
+       bg = 'white',
+       dpi = 600,
+       #width = 16, height = 9,
+       width = 9,
+       height = 16)
+
+
 # set factor levels for models --------------------------------------------
 
 # (age group: sum coded; phase = sequential coded)
@@ -769,7 +1022,7 @@ fig_challenge_tasks <- ggarrange(
 )
   
 # don't forget to remove PASAT points for OA in the figure in Inkscape, etc.
-ggsave(filename = here('figures', 'figureS1_challenge_tasks.svg'),
+ggsave(filename = here('figures', 'figureS2_challenge_tasks.svg'),
        plot = fig_challenge_tasks, device = 'svg',
        bg = 'white',
        dpi = 600, 

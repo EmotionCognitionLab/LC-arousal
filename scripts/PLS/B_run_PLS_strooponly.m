@@ -39,7 +39,7 @@ disp('%%%%%% RUNNING ALL-PHASES PLS (YA) %%%%%%')
 disp('running PLS for peak LC (hemi-averaged)')
 
 % load input data
-load([dir.data, filesep, 'PLS_all_input_avg.mat'])
+load([dir.data, filesep, 'PLS_all_input_avg_strooponly.mat'])
 
 % copy the behavioral data
 pls_opt.stacked_behavdata = pls_input_all_YA.LC_ratio_meta_peak;
@@ -88,7 +88,7 @@ disp('%%%%%% RUNNING ALL-PHASES PLS (OA) %%%%%%')
 disp('running PLS for peak LC (hemi-averaged)')
 
 % load input data
-load([dir.data, filesep, 'PLS_all_input_avg.mat'])
+load([dir.data, filesep, 'PLS_all_input_avg_strooponly.mat'])
 
 % copy the behavioral data
 pls_opt.stacked_behavdata = pls_input_all_OA.LC_ratio_meta_peak;
@@ -136,7 +136,7 @@ disp('%%%%%% RUNNING ALL-PHASES PLS (MULTI-GROUP) %%%%%%')
 disp('running PLS for peak LC (hemi-averaged)')
 
 % load input data
-load([dir.data, filesep, 'PLS_all_input_avg.mat'])
+load([dir.data, filesep, 'PLS_all_input_avg_strooponly.mat'])
 
 % load the structures for each group
 grp1 = pls_input_all_YA;
@@ -232,12 +232,8 @@ pls_result_all_caudal.perm_result.sprob
 
 %% save PLS results (multi-group only, for now)
 
-save([dir.data, filesep, 'PLS_all_output_avg.mat'], ...
+save([dir.data, filesep, 'PLS_all_output_avg_strooponly.mat'], ...
     'pls_result_all_peak', ...
     'pls_result_all_rostral', ...
     'pls_result_all_caudal');
-
-% temp: save PLS results - OA only
-save([dir.data, filesep, 'PLS_OA_output_avg.mat'], ...
-    'pls_OA_result_all_caudal');
 
