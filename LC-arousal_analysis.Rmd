@@ -170,6 +170,18 @@ kable(excl_physio_manual %>%
 
 ### LC delineation
 
+```{r find_peak_LC}
+
+source(here('scripts', '11_visualize-peak-LC-intensities.R'))
+
+```
+
+```{r figureS1, fig.height = 8, fig.width = 4}
+
+figureS1
+
+```
+
 ```{r run_LC}
 
 # calculates ICCs between raters' manual LC intensities
@@ -436,7 +448,7 @@ kable(pairwise.LF,
 
 NOTE: The older adult data points for the PASAT are only added so I could get the spacing right across tasks. They are removed in Inkscape for the version in the manuscript.
 
-```{r figureS1, fig.width = 12, fig.height = 8}
+```{r figureS2, fig.width = 12, fig.height = 8}
 
 fig_challenge_tasks
 
@@ -505,7 +517,11 @@ ttest.LC_agegr
 
 **2x2 mixed-design ANOVA** testing effects of topography (rostral/caudal) and age group (younger/older):
 
-```{r aov_LC}
+```{r aov_LC}```{r figureS1, fig.width = 12, fig.height = 8}
+
+fig_challenge_tasks
+
+```
 
 kable(aov.LC_topo$anova_table %>%
         mutate(r = r.LC_topo$r),
@@ -546,7 +562,7 @@ source(here('scripts', '9_create-corr-matrices.R'))
 
 ```{r figure5, fig.height = 14, fig.width = 12}
 
-cor_plot_all_peak
+cor_plot_all_avg
 
 ```
 
@@ -569,9 +585,6 @@ cor_YA_LCrostral_aSKNA_recov
 # peak LC & LF power at baseline
 cor_OA_LCpeak_LF_baseline
 
-# caudal LC & sysBP reactivity
-cor_OA_LCcaudal_sysBP_react 
-
 # caudal LC & RMSSD during recovery
 cor_OA_LCcaudal_HF_recov
 
@@ -580,8 +593,8 @@ cor_OA_LCcaudal_HF_recov
 #### PLS results
 
 Participants included for PLS analysis:
-- Younger: `r n_PLS_peak$n[n_PLS_peak$age_group == 'YA']`
-- Older: `r n_PLS_peak$n[n_PLS_peak$age_group == 'OA']`
+- Younger: `r n_PLS_avg$n[n_PLS_avg$age_group == 'YA']`
+- Older: `r n_PLS_avg$n[n_PLS_avg$age_group == 'OA']`
 
 ```{r run_PLSviz}
 
@@ -593,7 +606,7 @@ source(here('scripts', '10_visualize-PLS-results.R'))
 
 ```{r figure6, fig.width = 12, fig.height = 5}
 
-fig_pls_caudal_peak
+fig_pls_caudal_avg
 
 ```
 
@@ -604,5 +617,25 @@ Measures with bootstrap ratio with absolute value |>2| in the figure above:
 kable(data_LV_all_caudal %>% 
         filter(boot_ratio > 2 | boot_ratio < -2)) %>%
   kable_styling(full_width = FALSE)
+
+```
+
+### Results of analyses using only data from the Stroop task for younger participants
+
+```{r figureS3, fig.width = 12, fig.height = 14}
+
+figure3_strooponly
+
+```
+
+```{r figureS4, fig.height = 14, fig.width = 12}
+
+cor_plot_all_avg_strooponly
+
+```
+
+```{r figureS5, fig.width = 12, fig.height = 5}
+
+fig_pls_caudal_peak_strooponly
 
 ```
